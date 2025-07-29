@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # CORS middleware debe estar aquí
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -155,3 +156,14 @@ DJOSER = {
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
     },
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Vite dev server (puerto por defecto)
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",  # Vite dev server (puerto alternativo)
+    "http://127.0.0.1:5174",
+    "http://localhost:3000",  # Puerto alternativo
+    "http://127.0.0.1:3000",
+]
+
+CORS_ALLOW_CREDENTIALS = True
